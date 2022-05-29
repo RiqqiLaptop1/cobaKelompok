@@ -12,7 +12,6 @@ require_once 'functions.php';
 if (isset($_POST['masuk'])) {
   $login = login($_POST);
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,17 +27,13 @@ if (isset($_POST['masuk'])) {
 </head>
 
 <body>
-
-  <?php if (isset($login['error'])) : ?>
-    <p><?= $login['pesan']; ?></p>
-  <?php endif ?>
   <br><br><br><br><br>
   <div class="container ">
     <div class="row">
       <div class="col-md-4"></div>
       <div class="col-md-4  card border-dark bg-light mb-3 p-3">
         <div class="text-center">
-          <img src="../img/zero-two.jpg" class="img-thumbnail rounded-circle" width="100" height="100">
+          <img src="../img/ikan-cupang-comb-tail_169.jpeg" class="img-thumbnail rounded-circle" width="100" height="100">
           <h1>Toko Ali 2</h1>
         </div>
         <form action="" method="POST">
@@ -49,6 +44,7 @@ if (isset($_POST['masuk'])) {
           <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
+            <div class="invalid-feedback"><?= $login['pesan']; ?></div>
           </div>
           <button class="btn btn-primary mx-auto d-block" type="submit" name="masuk">Masuk</button>
         </form>
@@ -56,6 +52,13 @@ if (isset($_POST['masuk'])) {
       <div class="col-md-4"></div>
     </div>
   </div>
+
+  <?php if (isset($login['error'])) : ?>
+    <script>
+      const name = document.getElementById('username').classList.add('is-invalid');
+      const password = document.getElementById('password').classList.add('is-invalid');
+    </script>
+  <?php endif ?>
 
   <script src="..\bootstrap-4.6.1-dist\js\jquery-3.6.0.min.js"></script>
   <script src="..\bootstrap-4.6.1-dist\js\bootstrap.bundle.js"></script>
