@@ -179,7 +179,7 @@ if (isset($_POST['cari'])) {
           </form>
 
           <!-- tabel -->
-          <div class="tabel">
+          <div class="tabel mb-5">
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -223,9 +223,9 @@ if (isset($_POST['cari'])) {
     </div>
   </main>
 
-  <footer class="footer mt-auto py-3 fixed-bottom bg-light">
+  <footer class="footer mt-auto py-3  bg-light">
     <div class="container text-center ">
-      <span class="text-muted">&copy; 2022 | Toko Ali 2</span>
+      <span class="text-muted ">&copy; 2022 | Toko Ali 2</span>
     </div>
   </footer>
 

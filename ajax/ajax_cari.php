@@ -31,8 +31,8 @@ $barang = cari($_GET['keyword']);
           <td>Rp.<?= $b['harga']; ?></td>
           <td><?= $b['stok']; ?></td>
           <td>
-            <a href="?u=1&id_brg=<?= $b['id_brg']; ?>" data-toggle="modal" data-target="#exampleModalCenter">Ubah</a> |
-            <a href="?h=1&id_brg=<?= $b['id_brg']; ?>" onclick="return confirm('apakah anda yakin?');">Hapus</a>
+            <a class="btn btn-warning btn-sm" href="?u=1&id_brg=<?= $b['id_brg']; ?>">Ubah</a>
+            <a class="btn btn-danger btn-sm" href="?h=1&id_brg=<?= $b['id_brg']; ?>" onclick="return confirm('apakah anda yakin?');">Hapus</a>
           </td>
         </tr>
       <?php endforeach; ?>
