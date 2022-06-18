@@ -85,7 +85,7 @@ if (isset($_POST['cari'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produk</title>
-  <link rel="stylesheet" href="../bootstrap-4.6.1-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -230,8 +230,8 @@ if (isset($_POST['cari'])) {
     </div>
   </footer>
 
-  <script src="../bootstrap-4.6.1-dist/js/jquery-3.6.0.min.js"></script>
-  <script src="../bootstrap-4.6.1-dist/js/bootstrap.bundle.js"></script>
+  <script src="../js/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.bundle.js"></script>
   <script src="../js/script.js"></script>
 </body>
 

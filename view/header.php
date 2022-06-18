@@ -13,7 +13,7 @@
 
   <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-warning">
-      <a class="navbar-brand" href="index.php">
+      <a class="navbar-brand" href="index.php?home=true">
         <img src="<?= BASEURL; ?>/img/ikan-cupang-comb-tail_169.jpeg" alt="judul" width="30px" class="shadows rounded-circle">
         Toko Ali 2
       </a>
@@ -24,15 +24,19 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item <?php if (isset($_GET['home']))
+                                echo 'active ';
+                              ?>">
+            <a class="nav-link" href="<?= BASEURL; ?>/index.php?home=true">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Menu
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Produk</a>
+              <a class="dropdown-item <?php if (isset($_GET['produk']))
+                                        echo 'active bg-warning';
+                                      ?>" href="<?= BASEURL; ?>/index.php?produk=true">Produk</a>
               <a class="dropdown-item" href="#">Kota</a>
               <a class="dropdown-item" href="#">Pegawai</a>
               <a class="dropdown-item" href="#">Supplier</a>
@@ -44,8 +48,10 @@
               <a class="dropdown-item" href="#">Retur Pembelian</a>
             </div>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+          <li class="nav-item <?php if (isset($_GET['about']))
+                                echo 'active ';
+                              ?>">
+            <a class="nav-link" href="<?= BASEURL; ?>/index.php?about=true">About <span class="sr-only">(current)</span></a>
           </li>
         </ul>
         <div class="dropdown dropleft">
