@@ -1,6 +1,6 @@
 <?php
 require_once '../php/functions.php';
-$barang = cari($_GET['keyword']);
+$barang = cariProduk($_GET['keyword']);
 ?>
 <div class="tabel">
   <table class="table table-striped">
