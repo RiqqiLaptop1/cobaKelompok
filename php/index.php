@@ -9,6 +9,7 @@ if (!isset($_SESSION['login'])) {
 
 // query
 $barang = query("SELECT * FROM barang");
+// var_dump($barang);
 
 // tambah data
 if (isset($_POST['Tambah'])) {
