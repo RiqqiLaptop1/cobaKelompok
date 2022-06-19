@@ -145,7 +145,7 @@ if (isset($_POST['cari'])) {
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item " href="produk.php">Produk</a>
               <a class="dropdown-item active bg-warning" href="kota.php">Kota</a>
-              <a class="dropdown-item" href="#">Pegawai</a>
+              <a class="dropdown-item" href="pegawai.php">Pegawai</a>
               <a class="dropdown-item" href="#">Supplier</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Kustomer</a>
@@ -215,6 +215,7 @@ if (isset($_POST['cari'])) {
                   <th>No</th>
                   <th>Nama Kota</th>
                   <th>Provinsi</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>

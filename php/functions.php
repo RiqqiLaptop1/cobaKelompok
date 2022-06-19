@@ -80,3 +80,20 @@ function cariKota($keyword)
   }
   return $rows;
 }
+
+// pencarian pegawai
+function cariPegawai($keyword)
+{
+  $conn = koneksi();
+  $query = "SELECT * FROM pegawai_view
+            WHERE nm_pegawai LIKE '%$keyword%' OR
+                  almt_pegawai LIKE '%$keyword%'OR
+                  nm_kota LIKE '%$keyword%' ";
+
+  $result = mysqli_query($conn, $query);
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+  return $rows;
+}

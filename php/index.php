@@ -46,7 +46,7 @@ if (!isset($_SESSION['login'])) {
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item active bg-secondary" href="produk.php">Produk</a>
               <a class="dropdown-item" href="kota.php">Kota</a>
-              <a class="dropdown-item" href="#">Pegawai</a>
+              <a class="dropdown-item" href="pegawai.php">Pegawai</a>
               <a class="dropdown-item" href="#">Supplier</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Kustomer</a>

@@ -21,7 +21,7 @@ if (isset($_POST['masuk'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-  <link rel="stylesheet" href="..\bootstrap-4.6.1-dist\css\bootstrap.css">
+  <link rel="stylesheet" href="..\css\bootstrap.css">
 
   <title>Login</title>
 </head>
@@ -44,7 +44,7 @@ if (isset($_POST['masuk'])) {
           <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
-            <div class="invalid-feedback"><?= $login['pesan']; ?></div>
+            <div class="invalid-feedback">username / sandi salah</div>
           </div>
           <button class="btn btn-primary mx-auto d-block" type="submit" name="masuk">Masuk</button>
         </form>
@@ -60,8 +60,8 @@ if (isset($_POST['masuk'])) {
     </script>
   <?php endif ?>
 
-  <script src="..\bootstrap-4.6.1-dist\js\jquery-3.6.0.min.js"></script>
-  <script src="..\bootstrap-4.6.1-dist\js\bootstrap.bundle.js"></script>
+  <script src="..\js\jquery-3.6.0.min.js"></script>
+  <script src="..\js\bootstrap.bundle.js"></script>
 </body>
 
 </html>
