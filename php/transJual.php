@@ -1,3 +1,4 @@
+<br><br>
 <?php
 require_once "functions.php";
 session_start();
@@ -8,108 +9,119 @@ if (!isset($_SESSION['login'])) {
 }
 
 // query
-$barang = query("SELECT * FROM barang");
+$transJual = query("SELECT * FROM trans_jual_view");
+var_dump($transJual);
+die();
+
+// $kota = query("SELECT * FROM kota");
 
 // tambah data
-function tambah($data)
-{
-  $conn = koneksi();
+// function tambah($data)
+// {
+//   $conn = koneksi();
 
-  $nama = htmlspecialchars($data['nama']);
-  $harga = htmlspecialchars($data['harga']);
-  $stok = htmlspecialchars($data['stok']);
+//   $nama = htmlspecialchars($data['nama']);
+//   $alamat = htmlspecialchars($data['alamat']);
+//   $kota = htmlspecialchars($data['kota']);
 
-  $query = "INSERT INTO barang VALUES
-            (null,'$nama','$harga','$stok');";
+//   $query = "INSERT INTO supplier VALUES
+//             (null,'$nama','$alamat','$kota');";
 
-  mysqli_query($conn, $query);
-  echo mysqli_error($conn);
-  return mysqli_affected_rows($conn);
-}
-if (isset($_POST['Tambah'])) {
-  if (tambah($_POST) > 0) {
-    echo "<script>
-            alert('data berhasil ditambahkan');
-            document.location.href = 'produk.php';
-          </script>";
-  } else {
-    echo "data gagal ditambahkan";
-  }
-}
+//   mysqli_query($conn, $query);
+//   echo mysqli_error($conn);
+//   return mysqli_affected_rows($conn);
+// }
+// if (isset($_POST['Tambah'])) {
+//   if (tambah($_POST) > 0) {
+//     echo "<script>
+//             alert('data berhasil ditambahkan');
+//             document.location.href = 'supplier.php';
+//           </script>";
+//   } else {
+//     echo "data gagal ditambahkan";
+//   }
+// }
 
 // hapus data
-function hapus($id)
-{
-  $conn = koneksi();
-  mysqli_query($conn, "DELETE FROM barang WHERE id_brg = $id") or die(mysqli_error($conn));
-  return mysqli_affected_rows($conn);
-}
-if (isset($_GET['h'])) {
-  $id = $_GET["id_brg"];
+// function hapus($id)
+// {
+//   $conn = koneksi();
+//   mysqli_query($conn, "DELETE FROM supplier WHERE id_suppl = $id") or die(mysqli_error($conn));
+//   return mysqli_affected_rows($conn);
+// }
+// if (isset($_GET['h'])) {
+//   $id = $_GET["id_suppl"];
 
-  if (hapus($id) > 0) {
-    echo "<script>
-            alert('data berhasil dihapus');
-            document.location.href = 'produk.php';
-          </script>";
-  } else {
-    echo "data gagal dihapus";
-  }
-}
+//   if (hapus($id) > 0) {
+//     echo "<script>
+//             alert('data berhasil dihapus');
+//             document.location.href = 'supplier.php';
+//           </script>";
+//   } else {
+//     echo "data gagal dihapus";
+//   }
+// }
 
 // ubah data
-function ubah($data)
-{
-  $conn = koneksi();
+// function ubah($data)
+// {
+//   $conn = koneksi();
 
-  $id = $data['id_brg'];
-  $nama = htmlspecialchars($data['nama']);
-  $harga = htmlspecialchars($data['harga']);
-  $stok = htmlspecialchars($data['stok']);
+//   // var_dump($data);
+//   // die();
+//   $id = $data['id_suppl'];
+//   $nama = htmlspecialchars($data['nama']);
+//   $alamat = htmlspecialchars($data['alamat']);
+//   $kota = htmlspecialchars($data['kota']);
 
-  $query = "UPDATE barang SET
-            nm_brg = '$nama',
-            harga = '$harga',
-            stok = '$stok'
-            WHERE id_brg = $id";
 
-  mysqli_query($conn, $query) or die(mysqli_error($conn));
-  return mysqli_affected_rows($conn);
-}
+//   $query = "UPDATE supplier SET
+//             nm_suppl = '$nama',
+//             almt_suppl = '$alamat',
+//             kota_suppl = '$kota'
+//             WHERE id_suppl = $id";
+
+//   mysqli_query($conn, $query) or die(mysqli_error($conn));
+//   return mysqli_affected_rows($conn);
+// }
+
 $aksi = "Tambah";
 $id = null;
 $nama = null;
-$harga = null;
-$stok = null;
+$alamat = null;
+$nm_kt = 'pilih kota';
+$id_kt = null;
 $a = null;
 
-if (isset($_GET['u'])) {
+// if (isset($_GET['u'])) {
 
-  $id = $_GET['id_brg'];
-  $aksi = "Ubah";
-  $u = query("SELECT * FROM barang WHERE id_brg = $id ");
+//   $id = $_GET['id_suppl'];
+//   $aksi = "Ubah";
+//   $u = query("SELECT * FROM supplier_view
+//               WHERE id_suppl = $id ;");
 
-  $nama = $u['nm_brg'];
-  $harga =  $u['harga'];
-  $stok = $u['stok'];
-  $a = "autofocus";
+//   $nama = $u['nm_suppl'];
+//   $alamat = $u['almt_suppl'];
+//   $nm_kt = $u['nm_kota'];
+//   $id_kt = $u['kota_suppl'];
+//   $a = "autofocus";
 
-  if (isset($_POST['Ubah'])) {
-    if (ubah($_POST) > 0) {
-      echo "<script>
-          alert('data berhasil diubah');
-          document.location.href = 'produk.php';
-        </script>";
-    } else {
-      echo "data gagal diubah";
-    }
-  }
-}
+//   if (isset($_POST['Ubah'])) {
+//     if (ubah($_POST) > 0) {
+//       echo "<script>
+//           alert('data berhasil diubah');
+//           document.location.href = 'supplier.php';
+//         </script>";
+//     } else {
+//       echo "data gagal diubah";
+//     }
+//   }
+// }
 
 // pencarian data
-if (isset($_POST['cari'])) {
-  $barang = cariProduk($_POST['keyword']);
-}
+// if (isset($_POST['cari'])) {
+//   $barang = cariSuppl($_POST['keyword']);
+// }
 
 ?>
 
@@ -120,7 +132,7 @@ if (isset($_POST['cari'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produk</title>
+  <title>Transaksi Penjualan</title>
   <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 
@@ -147,10 +159,10 @@ if (isset($_POST['cari'])) {
               Menu
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item active bg-warning" href="produk.php">Produk</a>
-              <a class="dropdown-item" href="kota.php">Kota</a>
-              <a class="dropdown-item" href="pegawai.php">Pegawai</a>
-              <a class="dropdown-item" href="supplier.php">Supplier</a>
+              <a class="dropdown-item " href="produk.php">Produk</a>
+              <a class="dropdown-item " href="kota.php">Kota</a>
+              <a class="dropdown-item " href="pegawai.php">Pegawai</a>
+              <a class="dropdown-item active bg-warning" href="supplier.php">Supplier</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="customer.php">Kustomer</a>
               <a class="dropdown-item" href="transJual.php">Transaksi Penjualan</a>
@@ -177,48 +189,54 @@ if (isset($_POST['cari'])) {
 
   <main role="main" class="flex-shrink-0">
 
-    <div class="jumbotron text-center bg-light " style="margin-top: 60px;">
-      <h1 class="">Tabel Produk</h1>
+    <div class="jumbotron text-center bg-light ">
+      <h1 class="">Tabel Supplier</h1>
       <hr>
     </div>
-
     <div class="container">
-
       <div class="row">
-        <div class="col-md-4">
-          <h3 class=""><?= $aksi; ?> data</h3>
-          <form action="" method="POST">
-            <input type="hidden" name="id_brg" value="<?= $id; ?>">
+        <!-- <div class="col-md-4">
+          <h3 class=""><?= $aksi; ?> data</h3> -->
+
+        <!-- form -->
+        <!-- <form action="" method="POST">
+            <input type="hidden" name="id_suppl" value="<?= $id; ?>">
             <div class="form-group">
-              <label for="nama">Nama Produk</label>
+              <label for="nama">Nama Supplier</label>
               <input type="text" class="form-control" id="nama" name="nama" required autocomplete="off" value="<?= $nama; ?>" <?= $a; ?>>
             </div>
             <div class="form-group">
-              <label for="harga">Harga Produk</label>
-              <input type="number" class="form-control" id="harga" name="harga" required autocomplete="off" value="<?= $harga; ?>" <?= $a; ?> placeholder="Rp.">
+              <label for="alamat">Alamat Supplier</label>
+              <input type="text" class="form-control" id="alamat" name="alamat" required autocomplete="off" value="<?= $alamat; ?>" <?= $a; ?>>
             </div>
             <div class="form-group">
-              <label for="stok">Stok Produk</label>
-              <input type="number" class="form-control" id="stok" name="stok" required autocomplete="off" value="<?= $stok; ?>" <?= $a; ?>>
+              <label class="mr-sm-2" for="kota">Kota</label>
+              <select class="custom-select mr-sm-2" id="kota" name="kota">
+                <option value="<?= $id_kt; ?>"><?= $nm_kt; ?></option>
+                <?php
+                foreach ($kota as $k) : ?>
+                  <option value="<?= $k['kd_kota']; ?>"><?= $k['nm_kota']; ?></option>
+                <?php endforeach; ?>
+              </select>
             </div>
             <button type="reset" class="btn btn-secondary">Reset</button>
             <button type="submit" class="btn btn-primary" name="<?= $aksi; ?>"><?= $aksi; ?></button>
 
             <?php if (isset($_GET['u'])) : ?>
-              <a class="btn btn-dark" href="produk.php">Batal</a>
+              <a class="btn btn-dark" href="supplier.php">Batal</a>
             <?php endif ?>
 
           </form>
-        </div>
+        </div> -->
         <div class="col-md-7">
 
           <!-- pencarian -->
-          <form action="" method="POST" class=" mx-4  d-inline-block ">
+          <!-- <form action="" method="POST" class=" mx-4  d-inline-block ">
             <div class="form-group ">
               <input type="text" class="form-control keyword" name="keyword" placeholder="masukkan keyword pencarian..." autocomplete="off" size="50">
               <button type="submit" name="cari" class="tombol-cari">Cari</button>
             </div>
-          </form>
+          </form> -->
 
           <!-- tabel -->
           <div class="tabel mb-5">
@@ -226,33 +244,35 @@ if (isset($_POST['cari'])) {
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama Produk</th>
-                  <th>Harga</th>
-                  <th>Stok</th>
+                  <th>Tanggal</th>
+                  <th>Nama Customer</th>
+                  <th>Total Bayar</th>
+                  <th>Pegawai</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
 
-                <?php if (empty($barang)) : ?>
+                <?php if (empty($transJual)) : ?>
                   <tr>
                     <td colspan="5" class="font-italic text-danger text-center ">
-                      Data produk tidak ditemukan
+                      Data Penjualan tidak ditemukan
                     </td>
                   </tr>
                 <?php endif ?>
 
                 <?php
                 $i = 1;
-                foreach ($barang as $b) : ?>
+                foreach ($transJual as $tj) : ?>
                   <tr>
                     <td><?= $i++; ?></td>
-                    <td><?= $b['nm_brg']; ?></td>
-                    <td>Rp.<?= $b['harga']; ?></td>
-                    <td><?= $b['stok']; ?></td>
+                    <td><?= $tj['tgl']; ?></td>
+                    <td><?= $tj['nm_cust']; ?></td>
+                    <td>Rp.<?= $tj['total_bayar']; ?></td>
+                    <td><?= $tj['nm_pegawai']; ?></td>
                     <td>
-                      <a class="btn btn-warning btn-sm" href="?u=1&id_brg=<?= $b['id_brg']; ?>">Ubah</a>
-                      <a class="btn btn-danger btn-sm" href="?h=1&id_brg=<?= $b['id_brg']; ?>" onclick="return confirm('apakah anda yakin?');">Hapus</a>
+                      <a class="btn btn-warning btn-sm" href="?u=1&nota=<?= $tj['nota']; ?>">Ubah</a>
+                      <a class="btn btn-danger btn-sm" href="?h=1&nota=<?= $tj['nota']; ?>" onclick="return confirm('apakah anda yakin?');">Hapus</a>
                     </td>
                   </tr>
                 <?php endforeach; ?>
@@ -272,7 +292,7 @@ if (isset($_POST['cari'])) {
 
   <script src="../js/jquery-3.6.0.min.js"></script>
   <script src="../js/bootstrap.bundle.js"></script>
-  <script src="../js/script.js"></script>
+  <script src="../js/scriptSupplier.js"></script>
 </body>
 
 </html>

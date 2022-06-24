@@ -1,6 +1,6 @@
 <form action="" method="POST">
-  <label for="nama">Masukkan nama</label>
-  <input type="text" id="nama" name="nama">
+  <label for="Tanggal">Masukkan Tanggal</label>
+  <input type="datetime-local" id="Tanggal" name="Tanggal">
 
   <button type="submit">simpan</button>
 </form>

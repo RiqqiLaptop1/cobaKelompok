@@ -146,13 +146,13 @@ if (isset($_POST['cari'])) {
               <a class="dropdown-item " href="produk.php">Produk</a>
               <a class="dropdown-item active bg-warning" href="kota.php">Kota</a>
               <a class="dropdown-item" href="pegawai.php">Pegawai</a>
-              <a class="dropdown-item" href="#">Supplier</a>
+              <a class="dropdown-item" href="supplier.php">Supplier</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Kustomer</a>
-              <a class="dropdown-item" href="#">Transaksi Penjualan</a>
-              <a class="dropdown-item" href="#">Retur Penjualan</a>
-              <a class="dropdown-item" href="#">Transaksi Pembelian</a>
-              <a class="dropdown-item" href="#">Retur Pembelian</a>
+              <a class="dropdown-item" href="customer.php">Kustomer</a>
+              <a class="dropdown-item" href="transJual.php">Transaksi Penjualan</a>
+              <a class="dropdown-item" href="returJual.php">Retur Penjualan</a>
+              <a class="dropdown-item" href="transBeli.php">Transaksi Pembelian</a>
+              <a class="dropdown-item" href="returBeli.php">Retur Pembelian</a>
             </div>
           </li>
           <li class="nav-item ">
@@ -195,6 +195,11 @@ if (isset($_POST['cari'])) {
             </div>
             <button type="reset" class="btn btn-secondary">Reset</button>
             <button type="submit" class="btn btn-primary" name="<?= $aksi; ?>"><?= $aksi; ?></button>
+
+            <?php if (isset($_GET['u'])) : ?>
+              <a class="btn btn-dark" href="kota.php">Batal</a>
+            <?php endif ?>
+
           </form>
         </div>
         <div class="col-md-7">

@@ -97,3 +97,38 @@ function cariPegawai($keyword)
   }
   return $rows;
 }
+
+// pencarian pegawai
+function cariCust($keyword)
+{
+  $conn = koneksi();
+  $query = "SELECT * FROM customer_view
+            WHERE nm_cust LIKE '%$keyword%' OR
+                  almt_cust LIKE '%$keyword%'OR
+                  nm_kota LIKE '%$keyword%' ";
+
+  $result = mysqli_query($conn, $query);
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+  return $rows;
+}
+
+
+// pencarian supplier
+function cariSuppl($keyword)
+{
+  $conn = koneksi();
+  $query = "SELECT * FROM supplier_view
+            WHERE nm_suppl LIKE '%$keyword%' OR
+                  almt_suppl LIKE '%$keyword%'OR
+                  nm_kota LIKE '%$keyword%' ";
+
+  $result = mysqli_query($conn, $query);
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+  return $rows;
+}

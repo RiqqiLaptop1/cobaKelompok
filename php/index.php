@@ -47,13 +47,13 @@ if (!isset($_SESSION['login'])) {
               <a class="dropdown-item active bg-secondary" href="produk.php">Produk</a>
               <a class="dropdown-item" href="kota.php">Kota</a>
               <a class="dropdown-item" href="pegawai.php">Pegawai</a>
-              <a class="dropdown-item" href="#">Supplier</a>
+              <a class="dropdown-item" href="supplier.php">Supplier</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Kustomer</a>
-              <a class="dropdown-item" href="#">Transaksi Penjualan</a>
-              <a class="dropdown-item" href="#">Retur Penjualan</a>
-              <a class="dropdown-item" href="#">Transaksi Pembelian</a>
-              <a class="dropdown-item" href="#">Retur Pembelian</a>
+              <a class="dropdown-item" href="customer.php">Kustomer</a>
+              <a class="dropdown-item" href="transJual.php">Transaksi Penjualan</a>
+              <a class="dropdown-item" href="returJual.php">Retur Penjualan</a>
+              <a class="dropdown-item" href="transBeli.php">Transaksi Pembelian</a>
+              <a class="dropdown-item" href="returBeli.php">Retur Pembelian</a>
             </div>
           </li>
           <li class="nav-item ">
