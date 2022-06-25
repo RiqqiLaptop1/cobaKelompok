@@ -132,3 +132,21 @@ function cariSuppl($keyword)
   }
   return $rows;
 }
+
+// pencarian transJual
+function cariTransJual($keyword)
+{
+  $conn = koneksi();
+  $query = "SELECT * FROM trans_jual_view
+            WHERE nm_cust LIKE '%$keyword%' OR
+                  tgl LIKE '%$keyword%'OR
+                  nm_pegawai LIKE '%$keyword%'OR
+                  total_bayar LIKE '%$keyword%' ";
+
+  $result = mysqli_query($conn, $query);
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+  return $rows;
+}

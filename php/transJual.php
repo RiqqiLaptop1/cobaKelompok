@@ -10,8 +10,14 @@ if (!isset($_SESSION['login'])) {
 
 // query
 $transJual = query("SELECT * FROM trans_jual_view");
-var_dump($transJual);
-die();
+
+// detail
+if (isset($_GET['d'])) {
+  $id = $_GET['nota'];
+  $detail = query("SELECT * FROM detail_trans_jual_view WHERE nota = $id ");
+}
+
+
 
 // $kota = query("SELECT * FROM kota");
 
@@ -42,49 +48,6 @@ die();
 //   }
 // }
 
-// hapus data
-// function hapus($id)
-// {
-//   $conn = koneksi();
-//   mysqli_query($conn, "DELETE FROM supplier WHERE id_suppl = $id") or die(mysqli_error($conn));
-//   return mysqli_affected_rows($conn);
-// }
-// if (isset($_GET['h'])) {
-//   $id = $_GET["id_suppl"];
-
-//   if (hapus($id) > 0) {
-//     echo "<script>
-//             alert('data berhasil dihapus');
-//             document.location.href = 'supplier.php';
-//           </script>";
-//   } else {
-//     echo "data gagal dihapus";
-//   }
-// }
-
-// ubah data
-// function ubah($data)
-// {
-//   $conn = koneksi();
-
-//   // var_dump($data);
-//   // die();
-//   $id = $data['id_suppl'];
-//   $nama = htmlspecialchars($data['nama']);
-//   $alamat = htmlspecialchars($data['alamat']);
-//   $kota = htmlspecialchars($data['kota']);
-
-
-//   $query = "UPDATE supplier SET
-//             nm_suppl = '$nama',
-//             almt_suppl = '$alamat',
-//             kota_suppl = '$kota'
-//             WHERE id_suppl = $id";
-
-//   mysqli_query($conn, $query) or die(mysqli_error($conn));
-//   return mysqli_affected_rows($conn);
-// }
-
 $aksi = "Tambah";
 $id = null;
 $nama = null;
@@ -93,35 +56,11 @@ $nm_kt = 'pilih kota';
 $id_kt = null;
 $a = null;
 
-// if (isset($_GET['u'])) {
-
-//   $id = $_GET['id_suppl'];
-//   $aksi = "Ubah";
-//   $u = query("SELECT * FROM supplier_view
-//               WHERE id_suppl = $id ;");
-
-//   $nama = $u['nm_suppl'];
-//   $alamat = $u['almt_suppl'];
-//   $nm_kt = $u['nm_kota'];
-//   $id_kt = $u['kota_suppl'];
-//   $a = "autofocus";
-
-//   if (isset($_POST['Ubah'])) {
-//     if (ubah($_POST) > 0) {
-//       echo "<script>
-//           alert('data berhasil diubah');
-//           document.location.href = 'supplier.php';
-//         </script>";
-//     } else {
-//       echo "data gagal diubah";
-//     }
-//   }
-// }
 
 // pencarian data
-// if (isset($_POST['cari'])) {
-//   $barang = cariSuppl($_POST['keyword']);
-// }
+if (isset($_POST['cari'])) {
+  $barang = cariTransJual($_POST['keyword']);
+}
 
 ?>
 
@@ -190,7 +129,7 @@ $a = null;
   <main role="main" class="flex-shrink-0">
 
     <div class="jumbotron text-center bg-light ">
-      <h1 class="">Tabel Supplier</h1>
+      <h1 class="">Tabel Transaksi Penjualan</h1>
       <hr>
     </div>
     <div class="container">
@@ -228,15 +167,16 @@ $a = null;
 
           </form>
         </div> -->
-        <div class="col-md-7">
+        <div class="col-md ">
+          <a class="btn btn-primary mb-2" href="#">Catat Transaksi Baru</a>
 
           <!-- pencarian -->
-          <!-- <form action="" method="POST" class=" mx-4  d-inline-block ">
+          <form action="" method="POST" class=" mx-4 mb-2  d-inline-block ">
             <div class="form-group ">
               <input type="text" class="form-control keyword" name="keyword" placeholder="masukkan keyword pencarian..." autocomplete="off" size="50">
               <button type="submit" name="cari" class="tombol-cari">Cari</button>
             </div>
-          </form> -->
+          </form>
 
           <!-- tabel -->
           <div class="tabel mb-5">
@@ -259,8 +199,7 @@ $a = null;
                       Data Penjualan tidak ditemukan
                     </td>
                   </tr>
-                <?php endif ?>
-
+                <?php endif; ?>
                 <?php
                 $i = 1;
                 foreach ($transJual as $tj) : ?>
@@ -271,13 +210,33 @@ $a = null;
                     <td>Rp.<?= $tj['total_bayar']; ?></td>
                     <td><?= $tj['nm_pegawai']; ?></td>
                     <td>
-                      <a class="btn btn-warning btn-sm" href="?u=1&nota=<?= $tj['nota']; ?>">Ubah</a>
-                      <a class="btn btn-danger btn-sm" href="?h=1&nota=<?= $tj['nota']; ?>" onclick="return confirm('apakah anda yakin?');">Hapus</a>
+                      <a class="btn btn-success btn-sm detail" href="?d=1&nota=<?= $tj['nota']; ?>" data-toggle="modal" data-target="#exampleModalCenter">Detail</a>
                     </td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>
             </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <?php var_dump($detail); ?>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
@@ -292,7 +251,7 @@ $a = null;
 
   <script src="../js/jquery-3.6.0.min.js"></script>
   <script src="../js/bootstrap.bundle.js"></script>
-  <script src="../js/scriptSupplier.js"></script>
+  <script src="../js/scriptTransJual.js"></script>
 </body>
 
 </html>
